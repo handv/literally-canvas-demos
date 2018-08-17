@@ -10,7 +10,7 @@
 
 Literally Canvas是一个可扩展的开源（BSD许可）HTML5绘图组件，可以用于网页中插入画图板，类似于windows自带的画图板。可以用可视化工具绘制图画，同时提供api完成相同的功能，也可以将结果导出。它依赖于React.js，所以很方便在react项目中使用。
 
-![image](https://note.youdao.com/yws/public/resource/aa49422aaed8d3f642668b2277e96d25/xmlnote/F517AA46DE52492798E6BCA52451F2DD/65946)
+![image](http://ydschool-online.nos.netease.com/1534505657799adf1234.png)
  
 ### 特性
 
@@ -148,14 +148,14 @@ package.json
 - snapshot
 - ...
 
-[示例代码](https://github.corp.youdao.com/handv/literally-canvas-demos)
+[示例代码](https://github.com/handv/literally-canvas-demos)
 
 ### 二次开发
 
 - 下载源码 git clone https://github.com/literallycanvas/literallycanvas.git
 - 源码目录
 
-![image](https://note.youdao.com/yws/public/resource/aa49422aaed8d3f642668b2277e96d25/xmlnote/715673EFE9C942ADAE8A1C67AF7ED1C6/66384)
+![image](http://ydschool-online.nos.netease.com/1534505673327saf342.png)
 
 - 基于coffee-script开发（看不懂的，可以选择读lib目录下的js）
 - 打包
