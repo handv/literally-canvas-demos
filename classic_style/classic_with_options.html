@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <!-- stylesheet -->
+  <link href="../_static/css/literallycanvas.css" rel="stylesheet">
+  <style> 
+    /* 这样子定义高度 */
+    .my-drawing .literally {
+      height: 600px;
+    }
+  </style>
+  <!-- dependency: React.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+
+  <!-- Literally Canvas -->
+  <script src="../_static/js/literallycanvas.js"></script>
+  <title>literallycanvas-with-options</title>
+</head>
+
+<body>
+  <!-- where the widget goes. you can do CSS to it. -->
+  <!-- note: as of 0.4.13, you cannot use 'literally' as the class name.
+         sorry about that. -->
+  <div class="my-drawing"></div>
+
+  <!-- kick it off -->
+  <script>
+    const imgsrc = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534430360386&di=d27677fdcc76b8722a70802f377899e0&imgtype=0&src=http%3A%2F%2Ff.tx2.netease.com%2Fmonth_1411%2F14112416571076d075aadba7dc.jpeg'
+    const image = new Image()
+    image.setAttribute('crossOrigin', 'anonymous');
+    image.src = imgsrc
+    var bgImage = LC.createShape('Image', {
+      x: 0,
+      y: 0,
+      image
+    })
+    const waterImg = new Image()
+    image.setAttribute('crossOrigin', 'anonymous');
+    waterImg.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534440441987&di=6f75b374e0291aa8340f29028f6171b1&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201408%2F19%2F20140819151904_ce2w5.thumb.700_0.jpeg'
+    
+    // LC.init:常规js的初始化方法，非react使用
+    var lc = LC.init(document.getElementsByClassName('my-drawing')[0], {
+      // Literally Canvas的img文件夹的位置，没有结尾的斜线。默认为lib/img(默认不管用)
+      imageURLPrefix: '../_static/img',
+      // 设置可操作区域的宽高(设置后，图片将不能移动)
+      imageSize: { width: 1000, height: null },
+      // 初始的画笔颜色。如果不设置，默认为#000黑色 
+      primaryColor: 'red',
+      // 初始的填充颜色。不设置，默认为#fff白色
+      secondaryColor: 'transparent',
+      // 初始的背景颜色，默认为transparent透明
+      backgroundColor: '#fff',
+      // 最底层显示的shape列表（即涂抹的痕迹），不受clear按钮、loadSnapshot以及其他清除工具的影响
+      backgroundShapes: [bgImage],
+      // bottom,top(default),hidden(设置为hidden，即可把toolbar隐藏)
+      toolbarPosition: 'bottom',
+      //可用的工具,默认全部包含
+      //添加、删除某个工具，只需要写到这个数组里就可以
+      //tools: [LC.tools.Tool],
+      // 笔画宽度的列表。默认为 [1， 2， 5， 10， 20， 30] 
+      strokeWidths: [1, 2, 3, 5, 30],
+      // 所有形状的默认笔划宽度。默认为5(不能单独设置默认)
+      defaultStrokeWidth: 2,
+      // 水印,要在图形后显示的图像。图像将居中。它不会与绘图平移
+      watermarkImage: waterImg,
+      // 水印缩放比例(如果您想支持视网膜显示，您应该使用双倍大小的水印图像并将watermarkScale设置为1/window.devicePixelRatio)
+      watermarkScale: 1,
+      // 放大倍数，默认为4.0
+      zoomMax: 16,
+      // 缩小倍数，默认为0.2
+      zoomMin: 0.1,
+      // 缩放按钮点击一下缩放的量级，默认为0.2
+      zoomStep: 0.1,
+    });
+  </script>
+</body>
+
+</html>

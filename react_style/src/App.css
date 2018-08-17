@@ -1,0 +1,7 @@
+.App {
+  text-align: center;
+}
+/* 这样修改literallycanvas的css */
+.App .literally {
+  /* height: 600px; */
+}

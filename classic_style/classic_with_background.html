@@ -1,0 +1,90 @@
+<html>
+
+<head>
+  <!-- stylesheet -->
+  <link href="../_static/css/literallycanvas.css" rel="stylesheet">
+  <style>
+    .my-drawing {
+      /* 宽度可自定义 */
+      /* width: 1000px; */
+      /* 高度无效 */
+      height: 600px;
+    }
+
+    /* 这样子定义高度 */
+    .my-drawing .literally {
+      height: 600px;
+    }
+  </style>
+  <!-- dependency: React.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+
+  <!-- Literally Canvas -->
+  <script src="../_static/js/literallycanvas.js"></script>
+  <title>literallycanvas-with-background</title>
+</head>
+
+<body>
+  <!-- where the widget goes. you can do CSS to it. -->
+  <!-- note: as of 0.4.13, you cannot use 'literally' as the class name.
+         sorry about that. -->
+  <div class="my-drawing"></div>
+
+  <!-- kick it off -->
+  <script>
+    const IMGSRC = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534430360386&di=d27677fdcc76b8722a70802f377899e0&imgtype=0&src=http%3A%2F%2Ff.tx2.netease.com%2Fmonth_1411%2F14112416571076d075aadba7dc.jpeg'
+    const IMGSRC2 = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534433043576&di=68e61041b16538b1f9e626d2161ee2ff&imgtype=0&src=http%3A%2F%2Fww2.sinaimg.cn%2Fbmiddle%2F005BQoxxjw1ek5y9qulncj30a40ah0sz.jpg'
+    const image = new Image()
+    image.setAttribute('crossOrigin', 'anonymous');
+    image.src = IMGSRC
+    // 创建shape方法一，creatShape
+    var bgImage = LC.createShape('Image', {
+      x: 0,
+      y: 0,
+      image
+    })
+    //创建shape方法二，JSONToShape
+    var bgImage2 = LC.JSONToShape({
+      className: 'Image',
+      data: {
+        imageSrc: IMGSRC2,
+        x: 700,
+        y: 100,
+        scale: 1,
+      },
+    })
+    var shapes = LC.createShape('LinePath', {
+        points: [
+          LC.createShape('Point', { x: 510, y: 210, size: 1, color: '#080' }),
+          LC.createShape('Point', { x: 510, y: 290, size: 1, color: '#080' }),
+          LC.createShape('Point', { x: 590, y: 290, size: 1, color: '#080' }),
+          LC.createShape('Point', { x: 590, y: 210, size: 1, color: '#080' })
+        ]
+      })
+    // 创建shape方法二，JSONToShape（建议使用这种方式）
+    var jsonPoints = [[710, 210], [710, 290], [790, 290], [790, 210]]
+    var jsonShape = {
+      className: "LinePath",
+      data: {
+        // color可以用hsla，HEX，rgba等所有颜色类型
+        // 红色：hsla(0,100%,50%,1)
+        pointColor: "hsla(0, 0%, 0%, 1)",
+        pointCoordinatePairs: jsonPoints,
+        pointSize: 5,
+        smooth: true,
+      }
+    }
+    var shapes2 = LC.JSONToShape(jsonShape)
+    // backgroundshape: 不可擦写不可清除
+    var lc = LC.init(
+      document.getElementsByClassName('my-drawing')[0],
+      { imageURLPrefix: '../_static/img', backgroundShapes: [bgImage, shapes], }
+    );
+    // shape: 可擦写可清除
+    lc.saveShape(bgImage2)
+    lc.saveShape(shapes2)
+  </script>
+</body>
+
+</html>

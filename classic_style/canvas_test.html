@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #canvas1 {
+      background: red;
+    }
+
+    #canvas2 {
+      background: blue;
+    }
+    /* 两个canvas叠加在一起 */
+    .lc-drawing>* {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="lc-drawing with-gui" style="background-color: transparent;">
+    <canvas id="canvas1" width="200" height="200" style="width: 100px; height: 100px;"></canvas>
+    <canvas id="canvas2" width="200" height="200" style="width: 100px; height: 100px;">2</canvas>
+  </div>
+</body>
+
+</html>
