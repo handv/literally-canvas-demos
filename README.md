@@ -3,7 +3,7 @@
 - _static literallycanvas的依赖文件
 - classic_style 用普通js的方式编写的用例
 - react_style 基于create-react-app编写的用例
-- freecanvas-demo 二次开发，基本实现了图片旋转功能（但有bug）
+- freecanvas-demo 二次开发，基本实现了图片旋转功能
 - xmind api介绍
 
 ### LiterallyCanvas是什么
@@ -181,5 +181,5 @@ github上满足批改后台需求的最合适项目
 1. 更新缓慢
 2. 配置文件不够细，不能满足某些需求
 3. 功能不满足：
-1）图片旋转
+1）图片旋转(如有需要，可使用[freecanvas](https://www.npmjs.com/package/freecanvas)这个npm包，这是我基于literallycanvas开发的，增加了图片旋转功能)
 2）文字添加后可移动位置
